@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#09070d">
+  <title>NYXIA — Eclipse of Olympus</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="mist mist-a"></div>
+  <div class="mist mist-b"></div>
+
+  <main id="app">
+    <section id="home" class="screen active">
+      <div class="ornament">𓂀 ✦ ☾ ✦ 𓂀</div>
+      <p class="eyebrow">THE ECLIPSE OF OLYMPUS</p>
+      <h1>NYXIA</h1>
+      <p class="subtitle">Hardcore Strategy • Deception • Divine Trials</p>
+      <button class="gold-btn" data-go="characters">ENTER THE NIGHT</button>
+      <p class="tiny">The gods are watching.</p>
+    </section>
+
+    <section id="characters" class="screen">
+      <header class="page-head">
+        <button class="ghost-btn" data-go="home">← BACK</button>
+        <div>
+          <p class="eyebrow">01 / CHOOSE YOUR IDENTITY</p>
+          <h2>Choose Your God</h2>
+        </div>
+        <span class="counter" id="characterCount">0 / 29</span>
+      </header>
+      <div id="characterGrid" class="character-grid"></div>
+      <div class="bottom-action">
+        <button id="toForms" class="gold-btn" disabled>CHOOSE FORM</button>
+      </div>
+    </section>
+
+    <section id="forms" class="screen">
+      <header class="page-head">
+        <button class="ghost-btn" data-go="characters">← BACK</button>
+        <div>
+          <p class="eyebrow">02 / YOUR VESSEL</p>
+          <h2 id="formTitle">Choose Form</h2>
+        </div>
+      </header>
+      <div id="formGrid" class="form-grid"></div>
+      <div class="bottom-action">
+        <button id="toCards" class="gold-btn" disabled>CHOOSE 3 CARDS</button>
+      </div>
+    </section>
+
+    <section id="cards" class="screen">
+      <header class="page-head">
+        <button class="ghost-btn" data-go="forms">← BACK</button>
+        <div>
+          <p class="eyebrow">03 / DIVINE CONTRACT</p>
+          <h2>Choose Three Cards</h2>
+        </div>
+        <span class="counter" id="cardCount">0 / 3</span>
+      </header>
+      <p class="instruction">Every card must be different. Choose wisely.</p>
+      <div id="cardGrid" class="card-grid"></div>
+      <div class="bottom-action">
+        <button id="beginTrial" class="gold-btn" disabled>BEGIN TRIAL</button>
+      </div>
+    </section>
+
+    <section id="trial" class="screen">
+      <div class="trial-layout">
+        <aside class="nyx-panel">
+          <div class="nyx-aura"></div>
+          <div id="nyxPortrait" class="nyx-portrait" aria-label="Nyx portrait">NYX</div>
+          <div class="nyx-info">
+            <span>THE ADMIN</span>
+            <h3>NYX</h3>
+            <p id="nyxMood">Watching...</p>
+            <blockquote id="nyxLine">“The night is waiting.”</blockquote>
+          </div>
+        </aside>
+
+        <div class="quiz-panel">
+          <div class="quiz-top">
+            <div>
+              <span id="categoryLabel" class="tag">TRIAL</span>
+              <span id="difficultyLabel" class="tag danger">SUPER EXTRA HARD</span>
+            </div>
+            <div class="timer">⏳ <span id="timer">00:00</span></div>
+          </div>
+
+          <div class="hearts" id="hearts"></div>
+          <div class="progress-wrap">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+
+          <div id="confidence" class="confidence">
+            <span>☾</span>
+            <p>Do not fear the question. Fear the answer you believe is correct.</p>
+          </div>
+
+          <div class="question-card">
+            <p id="questionNumber" class="question-number">TRIAL I</p>
+            <h2 id="questionText">Loading...</h2>
+            <div id="answers" class="answers"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="result" class="screen">
+      <div class="result-card">
+        <div class="ornament">☾ ✦ 𓂀 ✦ ☾</div>
+        <p class="eyebrow">THE TRIAL IS COMPLETE</p>
+        <h2 id="resultTitle">RESULT</h2>
+        <div class="result-score" id="resultScore">0</div>
+        <div class="stats">
+          <div><span>Correct</span><b id="correctStat">0</b></div>
+          <div><span>Wrong</span><b id="wrongStat">0</b></div>
+          <div><span>Accuracy</span><b id="accuracyStat">0%</b></div>
+          <div><span>Time</span><b id="timeStat">00:00</b></div>
+          <div><span>Hearts</span><b id="heartStat">10 / 10</b></div>
+          <div><span>Rank</span><b id="rankStat">F</b></div>
+        </div>
+        <p id="resultMessage" class="result-message"></p>
+        <div class="result-actions">
+          <button id="retryBtn" class="gold-btn">NEW TRIAL</button>
+          <button class="ghost-btn" data-go="home">RETURN HOME</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="exitModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-eye">☾</div>
+      <h2>WAIT.</h2>
+      <p id="exitMessage">Leaving NYXIA will end your current trial.</p>
+      <div class="modal-actions">
+        <button id="stayBtn" class="gold-btn">STAY</button>
+        <button id="leaveBtn" class="danger-btn">LEAVE</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="data/questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
